@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { usersRoutes } from "./routes/usersRoutes.js";
 import cors from 'cors';
+const port = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
@@ -11,6 +12,6 @@ mongoose
   .connect(process.env.DB_URI, { dbName: "scores" })
   .then(() => {
     console.log("connected to DB successfully");
-    app.listen(5000, "localhost", () => console.log("Listening to port 5000..."));
+    app.listen(port, "localhost", () => console.log("Listening to port 5000..."));
   })
   .catch((err) => console.log(err));
